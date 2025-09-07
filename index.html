@@ -1,227 +1,37 @@
-<!doctype html>
-<html lang="en" class="no-js">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-
-  <title>WELCOME TO HJ CHAT WESITE</title>
-  <meta name="description" content="Short, compelling page description goes here (50–160 chars)." />
-
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Site Title" />
-  <meta property="og:description" content="Short, compelling page description goes here." />
-  <meta property="og:image" content="/og-image.png" />
-  <meta property="og:url" content="https://example.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Icons / Manifest (replace paths as needed) -->
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
-  <!-- Fonts (optional) -->
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-  <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
-
-  <style>
-    /* ===== CSS RESET (modern minimal) ===== */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body,h1,h2,h3,h4,h5,h6,p,figure,blockquote,dl,dd{margin:0}
-    ul[role='list'],ol[role='list']{list-style:none;padding:0;margin:0}
-    body{line-height:1.5;-webkit-font-smoothing:antialiased}
-    img,video,canvas,svg{display:block;max-width:100%}
-    input,button,textarea,select{font:inherit}
-    :root{--bg: #ffffff; --fg: #0f172a; --muted:#475569; --border:#e2e8f0; --accent:#2563eb; --accent-fg:#ffffff; --surface:#f8fafc; --ring: rgba(37,99,235,.35); --radius:1.0rem; --shadow: 0 10px 25px rgba(0,0,0,.06)}
-    @media (prefers-color-scheme: dark){:root{--bg:#0b1220; --fg:#e5e7eb; --muted:#94a3b8; --border:#1f2937; --accent:#60a5fa; --accent-fg:#0b1220; --surface:#0f172a; --ring: rgba(96,165,250,.35)}}
-    html.theme-light{--bg:#ffffff; --fg:#0f172a; --muted:#475569; --border:#e2e8f0; --accent:#2563eb; --accent-fg:#ffffff; --surface:#f8fafc; --ring: rgba(37,99,235,.35)}
-    html.theme-dark{--bg:#0b1220; --fg:#e5e7eb; --muted:#94a3b8; --border:#1f2937; --accent:#60a5fa; --accent-fg:#0b1220; --surface:#0f172a; --ring: rgba(96,165,250,.35)}
-
-    body{font-family:System-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:var(--fg)}
-
-    /* ===== Layout Utilities ===== */
-    .container{width:min(1100px, 92%);margin-inline:auto}
-    .stack{display:grid;gap:1rem}
-    .grid{display:grid;gap:1.25rem}
-    .grid-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .center{display:grid;place-items:center}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-    /* ===== Components ===== */
-    header.site-header{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--bg), transparent 0%);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.3px}
-    .brand .logo{width:28px;height:28px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#22d3ee);box-shadow:var(--shadow)}
-    nav ul{display:flex;gap:.9rem}
-    nav a{padding:.5rem .75rem;border-radius:999px;text-decoration:none;color:var(--fg);border:1px solid transparent}
-    nav a:hover{border-color:var(--border);background:var(--surface)}
-    .actions{display:flex;align-items:center;gap:.5rem}
-
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:999px;border:1px solid var(--border);background:var(--surface);text-decoration:none;color:var(--fg);box-shadow:0 1px 0 rgba(0,0,0,.04)}
-    .btn.primary{background:var(--accent);color:var(--accent-fg);border-color:color-mix(in oklab, var(--accent), black 8%)}
-    .btn:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 4px var(--ring)}
-
-    .hero{padding:clamp(2rem,6vw,5rem) 0}
-    .hero h1{font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;letter-spacing:-.02em}
-    .hero p{color:var(--muted);max-width:70ch}
-    .hero .cta{margin-top:1rem;display:flex;gap:.75rem;flex-wrap:wrap}
-
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow)}
-    .card h3{margin-bottom:.25rem;font-size:1.05rem}
-    .muted{color:var(--muted)}
-
-    footer{border-top:1px solid var(--border);padding:1.2rem 0;margin-top:3rem}
-
-    /* Small nav for mobile */
-    .menu-toggle{display:none}
-    @media (max-width: 700px){
-      nav ul{display:none}
-      .menu-toggle{display:inline-flex}
-      .mobile-menu{display:none;position:absolute;right:1rem;top:3.2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-      .mobile-menu a{display:block;padding:.75rem 1rem}
-      .mobile-menu.open{display:block}
-    }
-  </style>
-  <script>
-    // ===== Replace no-js class =====
-    document.documentElement.classList.remove('no-js');
-
-    // ===== Theme persistence =====
-    (function(){
-      const key = 'theme';
-      const saved = localStorage.getItem(key);
-      if(saved === 'light' || saved === 'dark'){
-        document.documentElement.classList.add(saved === 'light' ? 'theme-light' : 'theme-dark');
-      }
-    })();
-  </script>
-</head>
-<body>
-  <!-- ===== Header ===== -->
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#" aria-label="Homepage">
-        <span class="logo" aria-hidden="true"></span>
-        <span>Brand</span>
-      </a>
-
-      <button class="btn menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">Menu</button>
-
-      <nav aria-label="Primary">
-        <ul role="list">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Personal Blog</title>
+      </head> 
+   <body>
+      <header>   
+      <h1>Your Personal Blog</h1>
+      <nav>
+         <a href=”domain.tld/home”>Home</a>
+         <a href=”domain.tld/blog”>Blog</a>
+         <a href=”domain.tld/about”>About</a>
       </nav>
-
-      <div class="actions">
-        <button class="btn" id="themeToggle" aria-label="Toggle theme">Toggle theme</button>
-        <a class="btn primary" href="#cta">Get Started</a>
-      </div>
-
-      <div id="mobileMenu" class="mobile-menu" role="menu" aria-hidden="true">
-        <a href="#features" role="menuitem">Features</a>
-        <a href="#about" role="menuitem">About</a>
-        <a href="#contact" role="menuitem">Contact</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== Main ===== -->
-  <main id="main" class="container stack">
-    <section class="hero stack center">
-      <div class="stack" style="text-align:center; gap:1rem; max-width: 70ch;">
-        <h1>Build fast. Launch boldly.</h1>
-        <p class="muted">A modern, accessible HTML starter that includes responsive layout, dark mode, and clean component primitives—no build tools required.</p>
-        <div class="cta">
-          <a class="btn primary" href="#features">See Features</a>
-          <a class="btn" href="#about">Learn More</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="features" class="grid grid-3">
-      <article class="card">
-        <h3>Accessible</h3>
-        <p class="muted">Landmarks, focus styles, and reduced motion friendly.</p>
-      </article>
-      <article class="card">
-        <h3>Responsive</h3>
-        <p class="muted">Fluid grid and utilities that scale to any screen.</p>
-      </article>
-      <article class="card">
-        <h3>Themeable</h3>
-        <p class="muted">Light/dark with simple CSS variables and persistence.</p>
-      </article>
-    </section>
-
-    <section id="about" class="grid" style="grid-template-columns: 1.2fr 1fr; align-items:center">
-      <div class="stack">
-        <h2>About this template</h2>
-        <p class="muted">Use this as a starting point for landing pages, docs, or apps. Replace content, adjust colors in <code>:root</code>, and ship.</p>
-        <ul>
-          <li>Single file, no dependencies</li>
-          <li>SEO & social meta tags included</li>
-          <li>Sticky header with mobile menu</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Quick Start</h3>
-        <ol>
-          <li>Update <code>&lt;title&gt;</code> and meta description.</li>
-          <li>Swap icons and <code>og:image</code>.</li>
-          <li>Customize colors in <code>:root</code>.</li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="cta" class="center" style="padding:2rem 0">
-      <a class="btn primary" href="#contact">Contact Us</a>
-    </section>
-  </main>
-
-  <!-- ===== Footer ===== -->
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
-      <small class="muted">© <span id="year"></span> Your Company</small>
-      <a class="btn" href="#top">Back to top</a>
-    </div>
-  </footer>
-
-  <script>
-    // ===== Mobile menu toggle =====
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if(menuToggle && mobileMenu){
-      menuToggle.addEventListener('click', () => {
-        const open = mobileMenu.classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', String(open));
-        mobileMenu.setAttribute('aria-hidden', String(!open));
-      });
-    }
-
-    // ===== Theme toggle =====
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle?.addEventListener('click', () => {
-      const el = document.documentElement;
-      const isDark = el.classList.toggle('theme-dark');
-      el.classList.toggle('theme-light', !isDark);
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-
-    // ===== Dynamic year =====
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ===== Respect reduced motion =====
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('*').forEach(el => el.style.scrollBehavior = 'auto');
-    }
-  </script>
-</body>
+      </header>
+      <main>
+         <div class=”row">
+            <div class=”post-text-box”>
+               <h1>Newest Post</h1>
+               <section>
+                  <h1>First Post</h1>
+                  <p>The first post’s content</p>
+               </section>
+            </div>
+            <div class=”profile”>
+               <h1>About Me</h1>
+               <img src=”profile-picture.png”>
+               <p>About the author</p>
+            </div>  
+         </div>        
+      </main>
+      <footer>
+         <a href=”twitter.com/author”>Twitter</a>
+         <a href=”facebook.com/author”>Facebook</a>
+         <a href=”instagram.com/author”>Instagram</a>
+      </footer>
+    </body>
 </html>
